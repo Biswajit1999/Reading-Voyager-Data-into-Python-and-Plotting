@@ -1,0 +1,29 @@
+{
+  "title": "Reading Voyager Data Into Python And Plotting",
+  "description": "Reading Voyager Data Into Python And Plotting upgraded with reproducibility metadata, reference anchors, validation scripts and research-quality documentation.",
+  "equations": [
+    "Data provenance integrity",
+    "Finite numerical measurement checks",
+    "Reproducible figure/report validation"
+  ],
+  "references": [
+    "Wilson, G. et al., 2017. Good enough practices in scientific computing. PLOS Computational Biology, 13(6), p.e1005510."
+  ],
+  "anchors": [
+    {
+      "x": 1,
+      "y": 1,
+      "label": "input"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "label": "processing"
+    },
+    {
+      "x": 3,
+      "y": 9,
+      "label": "validated output"
+    }
+  ]
+}

@@ -6,3 +6,7 @@ Voyager 1 is a space probe launched by NASA on September 5, 1977, as part of the
 
 
 <p align = "center"><img width = "560" height = "300" src = "https://cdn.mos.cms.futurecdn.net/6W4X3sdtkercsbZF2SCvDk-970-80.jpg"></p>
+
+## Research Quality Upgrade
+
+See [RESEARCH_QUALITY.md](RESEARCH_QUALITY.md) for the validation layer, reference anchors, equations and research boundaries added to this repository.

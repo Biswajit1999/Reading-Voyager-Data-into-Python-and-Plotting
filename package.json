@@ -1,0 +1,12 @@
+{
+  "name": "reading-voyager-data-into-python-and-plotting",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Research-quality validation wrapper.",
+  "scripts": {
+    "validate:research": "node scripts/validate_repository.mjs",
+    "check": "node scripts/validate_repository.mjs"
+  },
+  "author": "Biswajit Jana",
+  "license": "MIT"
+}
