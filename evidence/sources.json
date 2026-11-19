@@ -1,0 +1,16 @@
+{
+  "project": "Voyager 1 radio waterfall",
+  "repository": "https://github.com/Biswajit1999/Reading-Voyager-Data-into-Python-and-Plotting",
+  "files": [
+    {
+      "label": "Research reference",
+      "path": "data/research-reference.json",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Voyager waterfall",
+      "path": "research/voyager_waterfall.png",
+      "role": "Figures"
+    }
+  ]
+}
