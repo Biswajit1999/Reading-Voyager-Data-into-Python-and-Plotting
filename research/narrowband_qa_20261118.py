@@ -7,6 +7,7 @@ and no calibration from instrumental units to flux density.
 from __future__ import annotations
 import math
 import statistics
+from numbers import Integral
 
 
 def robust_channel_snr(power, exclusion_index: int):
@@ -18,7 +19,8 @@ def robust_channel_snr(power, exclusion_index: int):
     x = [float(v) for v in power]
     if len(x) < 5 or any(not math.isfinite(v) or v < 0 for v in x):
         raise ValueError("need >=5 finite nonnegative power channels")
-    if not 0 <= exclusion_index < len(x):
+    if (isinstance(exclusion_index, bool) or not isinstance(exclusion_index, Integral)
+            or not 0 <= exclusion_index < len(x)):
         raise ValueError("invalid target index")
     ref = [v for i, v in enumerate(x) if i != exclusion_index]
     med = statistics.median(ref)
@@ -36,8 +38,9 @@ def drift_track_power(waterfall, start_channel: int, drift_channels_per_row: flo
         for row in rows
     ) or not math.isfinite(drift_channels_per_row):
         raise ValueError("invalid rectangular power waterfall or drift")
-    if isinstance(start_channel, bool) or not isinstance(start_channel, int):
+    if isinstance(start_channel, bool) or not isinstance(start_channel, Integral):
         raise ValueError("start channel must be integer")
+    start_channel = int(start_channel)
     idx = [math.floor(start_channel + t * drift_channels_per_row + 0.5)
            for t in range(len(rows))]
     if any(i < 0 or i >= len(rows[0]) for i in idx):
@@ -62,7 +65,11 @@ if __name__ == "__main__":
         def test_invalid(self):
             with self.assertRaises(ValueError):
                 robust_channel_snr([1, 1, 1, 1, 5], 4)
-            with self.assertRaises(ValueError):
-                drift_track_power([[1, 2, 3]], 2, 1)
+            for invalid_index in (True, 1.5, -1):
+                with self.subTest(index=invalid_index), self.assertRaises(ValueError):
+                    robust_channel_snr([1, 2, 3, 4, 5], invalid_index)
+            self.assertEqual(drift_track_power([[1, 2, 3]], 2, 1)["indices"], [2])
+            with self.assertRaisesRegex(ValueError, "track exits measured band"):
+                drift_track_power([[1, 2, 3], [4, 5, 6]], 2, 1)
 
     unittest.main()
