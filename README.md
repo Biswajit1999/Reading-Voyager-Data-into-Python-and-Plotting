@@ -26,3 +26,16 @@ The script downloads `Voyager1.single_coarse.fine_res.h5` (50,549,227 bytes) fro
 The [original exploratory notebook](Reading%20Voyager%20data%20and%20plotting.ipynb) shows the earlier Blimpy plots. Run `python scripts/export_waterfall_preview.py` to regenerate [the earlier preview](assets/voyager1-waterfall.png) from that notebook’s saved output. For a fit to the strongest carrier in a different window of this file, see the [Voyager drift validation](https://github.com/Biswajit1999/technosignature-doppler-search/blob/main/docs/VOYAGER_DRIFT_VALIDATION.md). The [separate narrowband QA exercise](research/NARROWBAND_QA_20261118.md) tests statistical mechanics on defined examples, with a different scope from the observed replay above.
 
 Source data: Breakthrough Listen / Berkeley SETI Research Center and the Green Bank Telescope. [Open data archive](https://seti.berkeley.edu/opendata).
+
+## Research evidence and downloads
+
+- [Browse the evidence file index](evidence/manifest.json) or open `evidence.html` from the checkout to inspect previews and downloads.
+- Start with [Research reference](data/research-reference.json).
+- [View Voyager waterfall](research/voyager_waterfall.png).
+
+Run these commands from the repository root to rebuild the published evidence.
+
+```sh
+python scripts/evidence_catalog.py
+python scripts/render_evidence_page.py
+```
